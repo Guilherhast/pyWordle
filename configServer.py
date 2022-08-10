@@ -1,4 +1,5 @@
 import os
+import random
 import urllib.request
 
 from globals import *
@@ -25,11 +26,20 @@ def extract(file_from, word_size):
         exit(1)
     return word_list
 
+def save_random_list(word_list, file_to, up_to=100_000):
+    random.shuffle(word_list)
+    with open(file_to,'w', encoding='utf8') as output_file:
+        for number,line in enumerate(word_list):
+            if number >= up_to:
+                break
+            output_file.write(line)
+
 #System
 def main():
     #make_db_dir(db_folder)
     #download_db(url_all_words,db_all)
     words = extract(db_all, word_size)
+    save_random_list(words, db_words, max_db_words)
     print(words)
     print("Done")
 
