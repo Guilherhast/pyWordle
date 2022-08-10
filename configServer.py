@@ -2,6 +2,8 @@ import os
 import random
 import urllib.request
 
+from datetime import datetime
+
 from globals import *
 
 #Functions
@@ -34,14 +36,19 @@ def save_random_list(word_list, file_to, up_to=100_000):
                 break
             output_file.write(line)
 
+def save_start_date(file_to):
+    today = datetime.now()
+    time_str = today.isoformat()
+    with open(file_to,'w',encoding='utf8') as output_file:
+        output_file.write(time_str)
+
 #System
 def main():
-    #make_db_dir(db_folder)
-    #download_db(url_all_words,db_all)
+    make_db_dir(db_folder)
+    download_db(url_all_words,db_all)
     words = extract(db_all, word_size)
     save_random_list(words, db_words, max_db_words)
-    print(words)
-    print("Done")
+    save_start_date(db_start)
 
 if __name__ == '__main__':
     main()
