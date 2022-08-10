@@ -1,0 +1,148 @@
+/*   BASIC STYLE */
+html{
+	display:flex;
+	justify-content:center;
+	background-color: #101010;
+}
+body{
+	background-color: midnightblue;
+	min-height: 150px;
+	max-width:50%;
+	text-align:center;
+}
+h1,h2,h3{
+	text-align: center;
+	box-sizing: border-box;
+	color:white;
+	margin-top:0px;
+	margin-bottom:0px;
+	padding: .1em .1em .1em .1em;
+	width:100%;
+}
+h1{
+	background-color:black;
+}
+h2{
+	text-align: center;
+	background-color:green;
+	color: white;
+	font-weight: bolder;
+	letter-spacing: 1em;
+}
+h3{
+	background-color:#4A4A4A;
+}
+
+/*   APP STYLE */
+
+.hidden, #winScreen.hidden, #mainStack.hidden{
+	display:none;
+}
+
+#winScreen{
+	background-color: midnightblue;
+
+	min-width: 12em;
+	min-height: 12em;
+
+	max-width: 12em;
+
+	display: flex;
+	flex-direction: column;
+
+
+	justify-content: center;
+	place-items: center;
+}
+#winScreen>div{
+	min-height:90%;
+	min-width:90%;
+	max-width: 100%;
+
+	flex-grow:1;
+	margin: 10%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#winMsg{
+
+	overflow: hidden;
+	text-overflow:ellipsis;
+
+	background-color: #252525;
+	border: 1px solid white;
+	padding: .5em;
+
+	color: white;
+	max-width: 100%;
+
+}
+#winMsg>a{
+	color:#3040FF;
+}
+#btnCopy{
+	background-color: green;
+	border-radius:0px 0px 5px 5px;
+
+	margin: 0px 0px .2em 0px;
+
+	width:100%;
+}
+
+
+.entryStack{
+	margin: 10px;
+	background-color: darkblue;
+
+	width: 100%;
+	margin:0px;
+}
+
+div.entryRow{
+	width:100%;
+	max-width:100%;
+
+	overflow: hidden;
+	padding: 1px;
+	margin-bottom:.3em;
+
+}
+div.entryRow.activeRow {
+	background-color: #242480;
+}
+div.entryRow input, div.entryRow button{
+	border:1px solid lightblue;
+	border-radius: 3px;
+
+	text-align: center;
+
+	height: 2em;
+	min-height: 2em;
+
+	width: 2em;
+	font-weight: bolder;
+
+	color:white;
+}
+div.entryRow input[type="text"]{
+	background-color: #101050;
+}
+div.entryRow input[type="text"]::selection{
+	background-color: #101050;
+}
+div.entryRow input.bg-green{
+	background-color: #108010;
+}
+div.entryRow input.bg-yellow{
+	background-color: #808010;
+}
+div.entryRow button{
+	background-color: #080808;
+	box-sizing: content-box;
+}
+div.entryRow button[disabled]{
+	background-color: darkgrey;
+}
