@@ -21,6 +21,11 @@ public_folder = os.path.join(root_dir,"public")
 api_re = '/api.*'
 param_re = 'day=(\\d+)'
 
+#Config
+url_all_words = 'https://www.ime.usp.br/~pf/dicios/br-utf8.txt'
+word_size = 5
+max_db_words = 30
+
 #Print variables
 if __name__ == '__main__':
     #Files
@@ -34,3 +39,7 @@ if __name__ == '__main__':
     print(public_folder)
     print(api_re)
     print(param_re)
+    #Config
+    print(url_all_words)
+    print(word_size)
+    print(max_db_words)
