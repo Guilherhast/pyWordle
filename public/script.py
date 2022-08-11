@@ -7,12 +7,6 @@ word = ""
 params = ""
 norm_word = ""
 
-
-#TODO
-#Delete it after change the front end
-#TEMP
-fake_result = ['Y', '', 'N','N','N']
-
 #Help functions
 def normalize(text):
     nfkd_form = unicodedata.normalize('NFKD', text)
@@ -21,24 +15,25 @@ def normalize(text):
     return ans.upper()
 
 
-#TODO
-#Make this function calculate the colors.
-#It should return a vector with same len as word
-#If entry[i] matches with word[i] result[i] should be 'G'
-#If entry[i] is in word result[i] should be 'Y'
-#Else entry[i] should be ''
 def calc_colors(entry):
     global norm_word
-    global fake_result
-    for i in range(len(fake_result)):
-        if fake_result[i] == 'Y':
-            fake_result[i]='G'
-        if fake_result[i] == '':
-            fake_result[i]='Y'
-        if fake_result[i] == 'N':
-            fake_result[i]=''
-    return fake_result
+    word = norm_word
+    word_size = len(word)
 
+    t = []
+    r = [''] * word_size
+
+    for i in range(word_size):
+        if entry[i] == word[i]:
+            r[i] = 'G'
+        else:
+            t.append(word[i])
+
+    for i in range(word_size):
+        if entry[i] in t and r[i]!= 'G':
+            r[i] = 'Y'
+            t.remove(entry[i])
+    return r
 #Api
 #TODO
 #Make a function to request the
