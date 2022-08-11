@@ -34,14 +34,20 @@ def calc_colors(entry):
             r[i] = 'Y'
             t.remove(entry[i])
     return r
+
 #Api
-#TODO
-#Make a function to request the
-#daily word from the api.
-#For this use: XMLHttpRequest
-#https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 def get_word():
-    return 'Front'.upper()
+    global params
+    api = "/api/?" + params
+    try:
+        req = XMLHttpRequest.new()
+        req.open("GET",api, False)
+        req.send(None)
+        output = str(req.response)
+    except:
+        output = "erros"
+    return output.upper()
+
 #Game functions
 def row_check(row):
     entry = get_entry(row)
