@@ -28,6 +28,10 @@ def get_word(path=''):
 
 #System
 def main():
+    word = get_word()
+    print(word)
+
+def main_():
     handler = functools.partial(Server,directory=public_folder)
     webServer = HTTPServer(server_cfg, handler)
     print("Server started http://%s:%s" % server_cfg)
