@@ -26,11 +26,34 @@ class Server(SimpleHTTPRequestHandler):
 def get_word(path=''):
     return 'Berro'
 
-#System
+def get_day_from_path(regex, path = ''):
+    day = 0
+    search = re.search(regex, path)
+    if search:
+        day_str = search.group(1)
+        day = int(day_str)
+    return day
+
+#Temp
+url_list = [
+        "localhost/",
+        "localhost/test=0",
+        "localhost/?day=",
+        "localhost/?day=-1",
+        "localhost/?day=0",
+        "localhost/?day=01",
+        "localhost/?day=10",
+        ]
+
 def main():
     word = get_word()
     print(word)
+    for url in url_list:
+        d_path = get_day_from_path(param_re, url)
+        print(d_path)
 
+
+#System
 def main_():
     handler = functools.partial(Server,directory=public_folder)
     webServer = HTTPServer(server_cfg, handler)
