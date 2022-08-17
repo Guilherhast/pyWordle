@@ -1,6 +1,8 @@
 import re
 import functools
+import linecache
 
+from datetime import datetime
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 
 from globals import *
@@ -34,6 +36,13 @@ def get_day_from_path(regex, path = ''):
         day = int(day_str)
     return day
 
+#IO
+def get_start_date(file_from):
+    date_str = linecache.getline(file_from,1)
+    date_str = date_str[:-1]
+    day = datetime.fromisoformat(date_str)
+    return day
+
 #Temp
 url_list = [
         "localhost/",
@@ -51,6 +60,8 @@ def main():
     for url in url_list:
         d_path = get_day_from_path(param_re, url)
         print(d_path)
+    date = get_start_date(db_start)
+    print(date)
 
 
 #System
