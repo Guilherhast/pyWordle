@@ -26,7 +26,19 @@ class Server(SimpleHTTPRequestHandler):
 #Functions
 #Calculation
 def get_word(path=''):
-    return 'Berro'
+    #Read day values
+    n_ans = 1
+    n_path = get_day_from_path(param_re,path)
+    n_cfg = get_day_from_cfg(db_start)
+    #Fix numbers
+    if n_path>0:
+        n_ans = min(n_path,n_cfg)
+    else:
+        n_ans = n_cfg
+
+    word = get_nth_word(db_words,n_ans)
+    word = word[:-1]
+    return word
 
 def get_day_from_path(regex, path = ''):
     day = 0
@@ -55,34 +67,8 @@ def get_start_date(file_from):
 def get_nth_word(file_from,n=1):
     return linecache.getline(file_from,n)
 
-#Temp
-url_list = [
-        "localhost/",
-        "localhost/test=0",
-        "localhost/?day=",
-        "localhost/?day=-1",
-        "localhost/?day=0",
-        "localhost/?day=01",
-        "localhost/?day=10",
-        ]
-
-def main():
-    word = get_word()
-    print(word)
-    for url in url_list:
-        d_path = get_day_from_path(param_re, url)
-        print(d_path)
-    date = get_start_date(db_start)
-    print(date)
-    d_cfg = get_day_from_cfg(db_start)
-    print(d_cfg)
-    nw = get_nth_word(db_words,5)
-    nw = nw[:-1]
-    print(nw)
-
-
 #System
-def main_():
+def main():
     handler = functools.partial(Server,directory=public_folder)
     webServer = HTTPServer(server_cfg, handler)
     print("Server started http://%s:%s" % server_cfg)
