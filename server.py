@@ -36,6 +36,15 @@ def get_day_from_path(regex, path = ''):
         day = int(day_str)
     return day
 
+def get_day_from_cfg(file_from):
+    start = get_start_date(file_from)
+    now = datetime.today()
+
+    delta = now - start
+
+    return delta.days + 1
+
+
 #IO
 def get_start_date(file_from):
     date_str = linecache.getline(file_from,1)
@@ -62,6 +71,8 @@ def main():
         print(d_path)
     date = get_start_date(db_start)
     print(date)
+    d_cfg = get_day_from_cfg(db_start)
+    print(d_cfg)
 
 
 #System
