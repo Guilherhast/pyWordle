@@ -52,6 +52,9 @@ def get_start_date(file_from):
     day = datetime.fromisoformat(date_str)
     return day
 
+def get_nth_word(file_from,n=1):
+    return linecache.getline(file_from,n)
+
 #Temp
 url_list = [
         "localhost/",
@@ -73,6 +76,9 @@ def main():
     print(date)
     d_cfg = get_day_from_cfg(db_start)
     print(d_cfg)
+    nw = get_nth_word(db_words,5)
+    nw = nw[:-1]
+    print(nw)
 
 
 #System
